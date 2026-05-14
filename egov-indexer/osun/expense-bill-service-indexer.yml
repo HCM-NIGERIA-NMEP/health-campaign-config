@@ -1,0 +1,19 @@
+ServiceMaps:
+  serviceName: expense-bill-service
+  version: 1.0.0
+  mappings:
+  - topic: osun-transformer-save-expense-bill
+    configKey: INDEX
+    indexes:
+    - name: osun-expense-bill-index-v1
+      type: bill
+      id: $.bill.id,$.bill.tenantId
+      jsonPath: $
+      isBulk: false
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+        - inJsonPath: $
+          outJsonPath: $.Data
+      timeStampField: $.bill.auditDetails.createdTime
