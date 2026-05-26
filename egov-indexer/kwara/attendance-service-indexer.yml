@@ -1,0 +1,85 @@
+ServiceMaps:
+  serviceName: attendance-service
+  version: 1.0.0
+  mappings:
+  - topic: kwara-save-attendance
+    configKey: INDEX
+    indexes:
+    - name: kwara-attendance-index-v1
+      type: attendance
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: kwara-update-attendance
+    configKey: INDEX
+    indexes:
+    - name: kwara-attendance-index-v1
+      type: attendance
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.lastModifiedTime
+  - topic: kwara-save-attendee
+    configKey: INDEX
+    indexes:
+    - name: kwara-attendee-index-v1
+      type: attendee
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: kwara-update-attendee
+    configKey: INDEX
+    indexes:
+    - name: kwara-attendee-index-v1
+      type: attendee
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.lastModifiedTime
+  - topic: kwara-save-staff
+    configKey: INDEX
+    indexes:
+    - name: kwara-staff-index-v1
+      type: staff
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: kwara-update-staff
+    configKey: INDEX
+    indexes:
+    - name: kwara-staff-index-v1
+      type: staff
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.lastModifiedTime
+  - topic: kwara-transformer-save-attendance-register
+    configKey: INDEX
+    indexes:
+    - name: kwara-transformed-attendance-register-index-v1
+      type: attendance-register
+      id: $.attendanceRegister.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.attendanceRegister.auditDetails.lastModifiedTime
+  - topic: kwara-transformer-save-attendance-log
+    configKey: INDEX
+    indexes:
+    - name: kwara-attendance-log-index-v1
+      type: attendance-log
+      id: $.attendanceLog.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.attendanceLog.auditDetails.lastModifiedTime
+  - topic: kwara-update-attendance-log
+    configKey: INDEX
+    indexes:
+    - name: kwara-attendance-log-index-v1
+      type: attendance-log
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.time
