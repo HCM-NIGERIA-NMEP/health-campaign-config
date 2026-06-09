@@ -1,0 +1,64 @@
+ServiceMaps:
+  serviceName: attendance-service
+  version: 1.0.0
+  mappings:
+  - topic: taraba-transformer-producer-attendee-index
+    configKey: INDEX
+    indexes:
+    - name: taraba-attendee-index-v1
+      type: attendee
+      id: $.attendee.id
+      isBulk: true
+      jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+          - inJsonPath: $
+            outJsonPath: $.Data
+      timeStampField: $.attendee.auditDetails.createdTime
+  - topic: taraba-transformer-producer-attendance-staff-index
+    configKey: INDEX
+    indexes:
+    - name: taraba-staff-index-v1
+      type: staff
+      id: $.staff.id
+      isBulk: true
+      jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+          - inJsonPath: $
+            outJsonPath: $.Data
+      timeStampField: $.staff.auditDetails.createdTime
+  - topic: taraba-transformer-save-attendance-register
+    configKey: INDEX
+    indexes:
+    - name: taraba-transformed-attendance-register-index-v1
+      type: attendance-register
+      id: $.attendanceRegister.id
+      isBulk: true
+      jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+          - inJsonPath: $
+            outJsonPath: $.Data
+      timeStampField: $.attendanceRegister.auditDetails.lastModifiedTime
+  - topic: taraba-transformer-save-attendance-log
+    configKey: INDEX
+    indexes:
+    - name: taraba-attendance-log-index-v1
+      type: attendance-log
+      id: $.attendanceLog.id
+      isBulk: true
+      jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+          - inJsonPath: $
+            outJsonPath: $.Data
+      timeStampField: $.attendanceLog.auditDetails.lastModifiedTime
