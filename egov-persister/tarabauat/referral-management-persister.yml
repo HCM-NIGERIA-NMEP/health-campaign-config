@@ -178,7 +178,7 @@ serviceMaps:
     queryMaps:
     - query: INSERT INTO tarabauat.hf_referral(id, clientReferenceId, tenantId, projectid,
         projectFacilityId, symptom, symptomsurveyid, beneficiaryid, referralcode,
-        nationallevelid, additionalDetails, createdBy, createdTime, lastModifiedBy,
+        nationallevelid, localityCode, additionalDetails, createdBy, createdTime, lastModifiedBy,
         lastModifiedTime, clientCreatedBy, clientCreatedTime, clientLastModifiedBy,
         clientLastModifiedTime, rowVersion, isDeleted) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
       basePath: $.*
@@ -193,6 +193,7 @@ serviceMaps:
       - jsonPath: $.*.beneficiaryId
       - jsonPath: $.*.referralCode
       - jsonPath: $.*.nationalLevelId
+      - jsonPath: $.*.localityCode
       - jsonPath: $.*.additionalFields
         type: JSON
         dbType: JSONB
