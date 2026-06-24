@@ -127,11 +127,9 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: UPDATE tarabauat.individual SET userId=?, userUuid=?, tenantId=?, givenName=?, familyName=?, otherNames=?, dateOfBirth=?, Gender=?, bloodGroup=?, mobileNumber=?, altContactNumber=?, email=?, fatherName=?, husbandName=?, relationship=?, photo=?, isSystemUserActive=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, username = ?, type = ?, roles = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
+        - query: UPDATE tarabauat.individual SET tenantId=?, givenName=?, familyName=?, otherNames=?, dateOfBirth=?, Gender=?, bloodGroup=?, mobileNumber=?, altContactNumber=?, email=?, fatherName=?, husbandName=?, relationship=?, photo=?, isSystemUserActive=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, roles = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
           basePath: $.*
           jsonMaps:
-            - jsonPath: $.*.userId
-            - jsonPath: $.*.userUuid
             - jsonPath: $.*.tenantId
             - jsonPath: $.*.name.givenName
             - jsonPath: $.*.name.familyName
@@ -154,8 +152,6 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
-            - jsonPath: $.*.userDetails.username
-            - jsonPath: $.*.userDetails.type
             - jsonPath: $.*.userDetails.roles
               type: JSON
               dbType: JSONB
