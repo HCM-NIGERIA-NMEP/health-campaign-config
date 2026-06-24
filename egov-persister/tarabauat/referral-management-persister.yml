@@ -180,7 +180,7 @@ serviceMaps:
         projectFacilityId, symptom, symptomsurveyid, beneficiaryid, referralcode,
         nationallevelid, localityCode, additionalDetails, createdBy, createdTime, lastModifiedBy,
         lastModifiedTime, clientCreatedBy, clientCreatedTime, clientLastModifiedBy,
-        clientLastModifiedTime, rowVersion, isDeleted) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        clientLastModifiedTime, rowVersion, isDeleted) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
       basePath: $.*
       jsonMaps:
       - jsonPath: $.*.id
