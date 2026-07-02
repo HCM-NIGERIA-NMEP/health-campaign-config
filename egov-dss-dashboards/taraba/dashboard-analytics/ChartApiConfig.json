@@ -4991,9 +4991,11 @@
       "Count",
       "WM Stock Entries Count",
       "Total Children Registered Count",
+      "Positive Unique Children Visited",
       "Negative Unique Children Visited",
       "users_with_more_than_3_count",
-      "Household with more than 20 members"
+      "Household with more than 20 members",
+      "Incomplete Records"
     ],
     "excludedBucketKeys": [
       "users_distributed"
@@ -5015,16 +5017,6 @@
           "WM Stock Entries Count"
         ],
         "newField": "WM Stock Entries",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Children Registered Count",
-          "Negative Unique Children Visited"
-        ],
-        "newField": "Incomplete Records",
         "_comments": ""
       },
       {
@@ -5100,9 +5092,11 @@
       "Count",
       "WM Stock Entries Count",
       "Total Children Registered Count",
+      "Positive Unique Children Visited",
       "Negative Unique Children Visited",
       "users_with_more_than_3_count",
-      "Household with more than 20 members"
+      "Household with more than 20 members",
+      "Incomplete Records"
     ],
     "excludedBucketKeys": [
       "users_distributed"
@@ -5124,16 +5118,6 @@
           "WM Stock Entries Count"
         ],
         "newField": "WM Stock Entries",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Children Registered Count",
-          "Negative Unique Children Visited"
-        ],
-        "newField": "Incomplete Records",
         "_comments": ""
       },
       {
@@ -5198,9 +5182,11 @@
     "excludedColumns": [
       "Count",
       "Total Children Registered Count",
+      "Positive Unique Children Visited",
       "Negative Unique Children Visited",
-      "fraud count",
-      "Household with more than 20 members"
+      "users_with_more_than_3_count",
+      "Household with more than 20 members",
+      "Incomplete Records"
     ],
     "excludedBucketKeys": [
       "minute_collection"
@@ -5213,16 +5199,6 @@
           "Household with more than 20 members"
         ],
         "newField": "Household with more than 20 members count",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Children Registered Count",
-          "Negative Unique Children Visited"
-        ],
-        "newField": "Incomplete Houses",
         "_comments": ""
       },
       {
@@ -10237,13 +10213,6 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "Data.referral.auditDetails.lastModifiedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "taraba-referral-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"ChildrenReferred\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"ChildrenReferred Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Referred Children Count\":{\"cardinality\":{\"field\":\"Data.referral.projectBeneficiaryClientReferenceId.keyword\",\"precision_threshold\":40000}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
         "dateRefField": "Data.hfReferral.auditDetails.lastModifiedTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "taraba-hf-referral-index-v1",
@@ -10333,13 +10302,6 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "Data.referral.auditDetails.lastModifiedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "taraba-referral-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"ChildrenReferred\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.ward.keyword\"}}]}},\"aggs\":{\"ChildrenReferred Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.ward.keyword\",\"size\":500},\"aggs\":{\"Referred Children Count\":{\"cardinality\":{\"field\":\"Data.referral.projectBeneficiaryClientReferenceId.keyword\",\"precision_threshold\":40000}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
         "dateRefField": "Data.hfReferral.auditDetails.lastModifiedTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "taraba-hf-referral-index-v1",
@@ -10426,13 +10388,6 @@
     "kind": "drillDown",
     "chartName": "DSS_HEALTH_SUMMARY_REFERRED_CHILDREN_BY_LOCALITY_ICCD",
     "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.referral.auditDetails.lastModifiedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\", \"ward\": \"Data.boundaryHierarchy.ward.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "taraba-referral-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"ChildrenReferred\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.healthFacility.keyword\"}}]}},\"aggs\":{\"ChildrenReferred Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.healthFacility.keyword\",\"size\":500},\"aggs\":{\"Referred Children Count\":{\"cardinality\":{\"field\":\"Data.referral.projectBeneficiaryClientReferenceId.keyword\",\"precision_threshold\":40000}}}}}}}}"
-      },
       {
         "module": "COMMON",
         "dateRefField": "Data.hfReferral.auditDetails.lastModifiedTime",
@@ -16669,7 +16624,7 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "Data.dateOfEntry",
+        "dateRefField": "",
         "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
         "indexName": "taraba-stock-index-v1",
         "transformData": "rawDocuments",
@@ -16843,7 +16798,7 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "Data.dateOfEntry",
+        "dateRefField": "",
         "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "taraba-stock-index-v1",
         "transformData": "rawDocuments",
@@ -16892,7 +16847,7 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "Data.dateOfEntry",
+        "dateRefField": "",
         "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"facilityId\": \"Data.facilityId.keyword\"}",
         "indexName": "taraba-stock-index-v1",
         "transformData": "rawDocuments",
@@ -17632,19 +17587,6 @@
           "spaq1SentCountryToState": "spaq1SentCountryToState.total.value",
           "spaq2SentCountryToState": "spaq2SentCountryToState.total.value"
         }
-      },
-      {
-        "key": "stockIndexUpdatedAccepted",
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\"}",
-        "indexName": "taraba-stock-index-updated-v1",
-        "transformData": "linearAggregation",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"spaq1AcceptedAtStateFacility\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"State Facility\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Central Facility\"}},{\"term\":{\"Data.productName.keyword\":\"SPAQ 1\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}}]}},\"aggs\":{\"total\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"spaq2AcceptedAtStateFacility\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"State Facility\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Central Facility\"}},{\"term\":{\"Data.productName.keyword\":\"SPAQ 2\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}}]}},\"aggs\":{\"total\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}",
-        "select": {
-          "spaq1AcceptedAtStateFacility": "spaq1AcceptedAtStateFacility.total.value",
-          "spaq2AcceptedAtStateFacility": "spaq2AcceptedAtStateFacility.total.value"
-        }
       }
     ],
     "chartType": "rawResponse",
@@ -17680,9 +17622,7 @@
     "action": "",
     "aggregationPaths": [
       "spaq1SentCountryToState",
-      "spaq2SentCountryToState",
-      "spaq1AcceptedAtStateFacility",
-      "spaq2AcceptedAtStateFacility"
+      "spaq2SentCountryToState"
     ],
     "cardsList": [
       {
@@ -17705,32 +17645,6 @@
         "valueType": "NUMBER",
         "descriptionParams": {
           "count": "spaq2SentCountryToState"
-        },
-        "colorRules": {
-          "type": "constant",
-          "color": "#0B4B66"
-        }
-      },
-      {
-        "id": "spaq1AcceptedAtStateFacility",
-        "labelKey": "DSS_HEALTH_INVENTORY_SPAQ1_ACCEPTED_AT_STATE_FACILITY",
-        "valuePath": "spaq1AcceptedAtStateFacility",
-        "valueType": "NUMBER",
-        "descriptionParams": {
-          "count": "spaq1AcceptedAtStateFacility"
-        },
-        "colorRules": {
-          "type": "constant",
-          "color": "#0B4B66"
-        }
-      },
-      {
-        "id": "spaq2AcceptedAtStateFacility",
-        "labelKey": "DSS_HEALTH_INVENTORY_SPAQ2_ACCEPTED_AT_STATE_FACILITY",
-        "valuePath": "spaq2AcceptedAtStateFacility",
-        "valueType": "NUMBER",
-        "descriptionParams": {
-          "count": "spaq2AcceptedAtStateFacility"
         },
         "colorRules": {
           "type": "constant",
@@ -18054,62 +17968,6 @@
           "_SPAQ2_SENT"
         ],
         "newField": "SPAQ2 Sent Country To State",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "_SPAQ1_ACCEPTED"
-        ],
-        "newField": "SPAQ1 Accepted At State Facility",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "_SPAQ2_ACCEPTED"
-        ],
-        "newField": "SPAQ2 Accepted At State Facility",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "_SPAQ1_SENT",
-          "Negative SPAQ1 Accepted at State Facility"
-        ],
-        "newField": "SPAQ1 Unaccepted Country To State",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "_SPAQ2_SENT",
-          "Negative SPAQ2 Accepted at State Facility"
-        ],
-        "newField": "SPAQ2 Unaccepted Country To State",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "_SPAQ1_REJECTED"
-        ],
-        "newField": "SPAQ1 Rejected",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "_SPAQ2_REJECTED"
-        ],
-        "newField": "SPAQ2 Rejected",
         "_comments": ""
       }
     ],
