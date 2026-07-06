@@ -1067,7 +1067,6 @@
             }
           ]
         },
-        
         {
           "row": 1,
           "name": "DSS_HEALTH_TEAM_PERFORMANCE",
@@ -1092,6 +1091,7 @@
             }
           ]
         },
+
         {
           "row": 2,
           "name": "DSS_HEALTH_TEAM_PERFORMANCE",
@@ -1121,21 +1121,22 @@
           "name": "DSS_HEALTH_TEAM_PERFORMANCE",
           "vizArray": [
             {
-              "id": 783,
-              "name": "DSS_HEALTH_SUMMARY_TEAM_PERFORMANCE",
-              "label": "DSS_HEALTH_SUMMARY_TEAM_PERFORMANCE",
+              "id": 761,
+              "name": "DSS_HEALTH_KIBANA_SCREEN",
+              "label": "DSS_HEALTH_KIBANA_SCREEN",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "summaryTeamPerformanceByDistrictICCD",
-                  "name": "DSS_HEALTH_SUMMARY_TEAM_PERFORMANCE_BY_DISTRICT_ICCD",
+                  "id": "teamPerformanceSummary",
+                  "name": "DASHBOARD_TEAM_PERFORMNACE",
                   "code": "",
-                  "chartType": "table",
+                  "moduleName": "iccd-maps",
+                  "pageName": "tarabauat-team-performance-summary",
+                  "chartType": "kibanaComponent",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "BOUNDARY"
+                  "headers": []
                 }
               ]
             }
@@ -1256,7 +1257,7 @@
             }
           ]
         },
-        
+
         {
           "row": 1,
           "name": "DSS_HEALTH_REFERRAL_AND_SIDE_EFFECTS",
@@ -1285,18 +1286,20 @@
           "name": "DSS_HEALTH_REFERRAL_AND_SIDE_EFFECTS",
           "vizArray": [
             {
-              "id": 803,
-              "name": "DSS_HEALTH_SUMMARY_OF_REFERRED_CHILDREN",
-              "label": "DSS_HEALTH_SUMMARY_OF_REFERRED_CHILDREN",
+              "id": 761,
+              "name": "DSS_HEALTH_KIBANA_SCREEN",
+              "label": "DSS_HEALTH_KIBANA_SCREEN",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "summaryOfReferredChildrenByDistrictsICCD",
-                  "name": "DSS_HEALTH_SUMMARY_REFERRED_CHILDREN_BY_DISTRICTS_ICCD",
+                  "id": "referralSummary",
+                  "name": "DASHBOARD_REFERRAL_SUMMARY",
                   "code": "",
-                  "chartType": "table",
+                  "moduleName": "iccd-maps",
+                  "pageName": "tarabauat-referral-summary",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
@@ -1304,7 +1307,87 @@
             }
           ]
         },
-        
+
+        {
+          "row": 1,
+          "name": "DSS_CUSTOM_KPIS_TAB",
+          "vizArray": [
+            {
+              "id": 760,
+              "name": "DSS_HEALTH_KIBANA_SCREEN",
+              "label": "DSS_HEALTH_KIBANA_SCREEN",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "successfulAdministrationsMap",
+                  "name": "DASHBOARD_ADMINISTRATION_SUMMARY",
+                  "code": "",
+                  "moduleName": "iccd-maps",
+                  "pageName": "tarabauat-administration-summary",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_CUSTOM_KPIS_TAB",
+          "vizArray": [
+            {
+              "id": 760,
+              "name": "DSS_HEALTH_KIBANA_SCREEN",
+              "label": "DSS_HEALTH_KIBANA_SCREEN",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "syncHistogram",
+                  "name": "DASHBOARD_SYNC_HISTOGRAM",
+                  "code": "",
+                  "moduleName": "iccd-maps",
+                  "pageName": "tarabauat-sync-histogram",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "row": 2,
+          "name": "DSS_COHORT",
+          "vizArray": [
+            {
+              "id": 760,
+              "name": "DSS_HEALTH_KIBANA_SCREEN",
+              "label": "DSS_HEALTH_KIBANA_SCREEN",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "syncHistogram",
+                  "name": "DASHBOARD_COHORT_CHARTS",
+                  "code": "",
+                  "moduleName": "iccd-maps",
+                  "pageName": "tarabauat-cohort-charts",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+
         {
           "row": 1,
           "name": "DSS_HEALTH_USER_ACTIVITY",
@@ -1346,21 +1429,39 @@
                   "filters": {
                     "userInfo": {
                       "type": "text",
-                      "filterFields": ["userName", "userId", "nameOfUser"]
+                      "filterFields": [
+                        "userName",
+                        "userId",
+                        "nameOfUser"
+                      ]
                     },
                     "status": {
                       "type": "dropdown",
-                      "filterFields": ["active"],
-                      "options": ["ACTIVE", "INACTIVE"]
+                      "filterFields": [
+                        "active"
+                      ],
+                      "options": [
+                        "ACTIVE",
+                        "INACTIVE"
+                      ]
                     },
                     "roles": {
                       "type": "dropdown",
-                      "filterFields": ["role"],
-                      "options": ["COMMUNITY_DISTRIBUTOR", "TEAM_SUPERVISOR", "DISTRIBUTOR"]
+                      "filterFields": [
+                        "role"
+                      ],
+                      "options": [
+                        "COMMUNITY_DISTRIBUTOR",
+                        "TEAM_SUPERVISOR",
+                        "DISTRIBUTOR"
+                      ]
                     },
                     "boundary": {
                       "type": "boundary",
-                      "filterFields": ["province", "district"]
+                      "filterFields": [
+                        "province",
+                        "district"
+                      ]
                     }
                   },
                   "name": "DSS_HEALTH_USER_ACTIVITY_OVERVIEW_SUMMARY",
@@ -1409,20 +1510,34 @@
                       "filters": {
                         "actionTypes": {
                           "type": "dropdown",
-                          "filterFields": ["actionType"],
-                          "options": ["Stock", "Delivery", "Complaints", "Error Record"]
+                          "filterFields": [
+                            "actionType"
+                          ],
+                          "options": [
+                            "Stock",
+                            "Delivery",
+                            "Complaints",
+                            "Error Record"
+                          ]
                         },
                         "outcome": {
                           "type": "dropdown",
-                          "filterFields": ["outcome"],
-                          "options": ["SUCCESS", "FAILED"]
+                          "filterFields": [
+                            "outcome"
+                          ],
+                          "options": [
+                            "SUCCESS",
+                            "FAILED"
+                          ]
                         },
                         "calender": {
                           "type": "calender"
                         },
                         "recordId": {
                           "type": "text",
-                          "filterFields": ["id"]
+                          "filterFields": [
+                            "id"
+                          ]
                         }
                       },
                       "charts": [
@@ -1442,7 +1557,6 @@
             }
           ]
         },
-
         {
           "row": 1,
           "name": "DSS_HEALTH_DEVICE_SWITCH",
@@ -1600,34 +1714,6 @@
             }
           ]
         },
-
-        {
-          "row": 1,
-          "name": "DSS_CUSTOM_KPIS_TAB",
-          "vizArray": [
-            {
-              "id": 760,
-              "name": "DSS_HEALTH_KIBANA_SCREEN",
-              "label": "DSS_HEALTH_KIBANA_SCREEN",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "successfulAdministrationsMap",
-                  "name": "DASHBOARD_MAP_SUCCESSFUL_ADMINISTRATIONS",
-                  "code": "",
-                  "moduleName": "iccd-maps",
-                  "pageName": "tarabauat-custom-kpis-tab",
-                  "chartType": "kibanaComponent",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-
         {
           "row": 1,
           "name": "DSS_HEALTH_PAYMENTS",
@@ -1837,7 +1923,6 @@
             }
           ]
         },
-
         {
           "row": 1,
           "name": "DSS_HEALTH_ATTENDANCE",
