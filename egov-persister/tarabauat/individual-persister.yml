@@ -127,7 +127,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: UPDATE tarabauat.individual SET userId=?, userUuid=?, tenantId=?, givenName=?, familyName=?, otherNames=?, dateOfBirth=?, Gender=?, bloodGroup=?, mobileNumber=?, altContactNumber=?, email=?, fatherName=?, husbandName=?, relationship=?, photo=?, isSystemUserActive=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, username = ?, type = ?, roles = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
+        - query: UPDATE tarabauat.individual SET tenantId=?, givenName=?, familyName=?, otherNames=?, dateOfBirth=?, Gender=?, bloodGroup=?, mobileNumber=?, altContactNumber=?, email=?, fatherName=?, husbandName=?, relationship=?, photo=?, isSystemUserActive=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, roles = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
