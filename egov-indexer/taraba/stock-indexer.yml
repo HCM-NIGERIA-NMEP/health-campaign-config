@@ -71,6 +71,44 @@ ServiceMaps:
             - inJsonPath: $
               outJsonPath: $.Data
         timeStampField: $.createdTime
+      - name: taraba-user-sync-index-v1
+        type: users
+        id: $.id,$.tenantId,$.clientReferenceId,$.lastModifiedBy
+        isBulk: true
+        jsonPath: $
+        customJsonMapping:
+          indexMapping:
+            Data: { additionalDetails: {} }
+          fieldMapping:
+            - inJsonPath: $.id
+              outJsonPath: $.Data.stockId
+            - inJsonPath: $.lastModifiedBy
+              outJsonPath: $.Data.syncedUserId
+            - inJsonPath: $.userName
+              outJsonPath: $.Data.syncedUserName
+            - inJsonPath: $.role
+              outJsonPath: $.Data.role
+            - inJsonPath: $.boundaryHierarchy
+              outJsonPath: $.Data.boundaryHierarchy
+            - inJsonPath: $.lastModifiedTime
+              outJsonPath: $.Data.clientCreatedTime
+            - inJsonPath: $.syncedTime
+              outJsonPath: $.Data.createdTime
+            - inJsonPath: $.syncedTimeStamp
+              outJsonPath: $.Data.syncedTimeStamp
+            - inJsonPath: $.@timestamp
+              outJsonPath: $.Data.@timestamp
+            - inJsonPath: $.taskDates
+              outJsonPath: $.Data.taskDates
+            - inJsonPath: $.syncedDate
+              outJsonPath: $.Data.syncedDate
+            - inJsonPath: $.campaignNumber
+              outJsonPath: $.Data.campaignNumber
+            - inJsonPath: $.campaignId
+              outJsonPath: $.Data.campaignId
+            - inJsonPath: $.additionalDetails.cycleIndex
+              outJsonPath: $.Data.additionalDetails.cycleIndex
+        timeStampField: $.lastModifiedTime
 
   - topic: taraba-transformer-producer-stock-recon-index-v1-topic
     configKey: INDEX
