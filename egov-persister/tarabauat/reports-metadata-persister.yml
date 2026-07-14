@@ -13,7 +13,7 @@ serviceMaps:
       transactionCodeJsonPath: $.dag_run_id
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: INSERT INTO tarabauat.REPORTS_METADATA(eventId, tenantId, campaignIdentifier, identifierType, reportName, triggerFrequency, fileStoreId, triggerTime, reportTriggeredTimeMs, reportTriggeredTime, dagRunId, dagName, status, statusOrder, errorMessage, errorType, fileSizeBytes, reportGenerationTimeSeconds, rowCount, reportRange, eventTimestamp, eventTimestampMs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (eventId) DO NOTHING;
+        - query: INSERT INTO tarabauat.REPORTS_METADATA(eventId, tenantId, campaignIdentifier, identifierType, reportName, triggerFrequency, fileStoreId, triggerTime, reportTriggeredTimeMs, reportTriggeredTime, dagRunId, dagName, status, statusOrder, errorMessage, errorType, fileSizeBytes, reportGenerationTimeSeconds, rowCount, reportRange, eventTimestamp, eventTimestampMs, expectedRows, expectedGenerationTimeSeconds, secondsSinceTriggered) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (eventId) DO NOTHING;
           basePath: $
           jsonMaps:
             - jsonPath: $.event_id
@@ -38,3 +38,6 @@ serviceMaps:
             - jsonPath: $.report_dates
             - jsonPath: $.timestamp
             - jsonPath: $.timestamp_ms
+            - jsonPath: $.expected_rows
+            - jsonPath: $.expected_generation_time_seconds
+            - jsonPath: $.seconds_since_triggered
