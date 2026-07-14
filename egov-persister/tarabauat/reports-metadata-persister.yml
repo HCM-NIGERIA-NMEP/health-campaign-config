@@ -2,36 +2,8 @@ serviceMaps:
   serviceName: reports
   mappings:
     - version: 1.0
-      description: Persists reports metadaa.
+      description: Persists report generation status/lifecycle events and final metadata.
       fromTopic: tarabauat-save-hcm-report-metadata
-      isTransaction: true
-      isAuditEnabled: true
-      module: REPORTS
-      objecIdJsonPath: $.dag_run_id
-      tenantIdJsonPath: $.tenant_id
-      userUuidJsonPath: $.[0].auditDetails.createdBy
-      transactionCodeJsonPath: $.dag_run_id
-      auditAttributeBasePath: $.*
-      queryMaps:
-        - query: INSERT INTO tarabauat.REPORTS_METADATA(dagRunId, dagName, campaignIdentifier, reportName, triggerFrequency, fileStoreId, triggerTime, tenantId, reportRange, fileSizeBytes, reportGenerationTimeSeconds, rowCount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-          basePath: $
-          jsonMaps:
-            - jsonPath: $.dag_run_id
-            - jsonPath: $.dag_name
-            - jsonPath: $.campaign_identifier
-            - jsonPath: $.report_name
-            - jsonPath: $.trigger_frequency
-            - jsonPath: $.file_store_id
-            - jsonPath: $.trigger_time
-            - jsonPath: $.tenant_id
-            - jsonPath: $.report_dates
-            - jsonPath: $.file_size_bytes
-            - jsonPath: $.report_generation_time_seconds
-            - jsonPath: $.row_count
-
-    - version: 1.0
-      description: Persists report generation status/lifecycle events.
-      fromTopic: tarabauat-hcm-report-status
       isTransaction: true
       isAuditEnabled: true
       module: REPORTS
@@ -41,7 +13,7 @@ serviceMaps:
       transactionCodeJsonPath: $.dag_run_id
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: INSERT INTO tarabauat.REPORT_STATUS_EVENTS(eventId, tenantId, campaignIdentifier, identifierType, reportName, triggerFrequency, triggerTime, dagRunId, dagName, status, statusOrder, errorMessage, errorType, fileStoreId, fileSizeBytes, rowCount, reportDates, reportGenerationTimeSeconds, eventTimestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (eventId) DO NOTHING;
+        - query: INSERT INTO tarabauat.REPORTS_METADATA(eventId, tenantId, campaignIdentifier, identifierType, reportName, triggerFrequency, fileStoreId, triggerTime, reportTriggeredTimeMs, reportTriggeredTime, dagRunId, dagName, status, statusOrder, errorMessage, errorType, fileSizeBytes, reportGenerationTimeSeconds, rowCount, reportRange, eventTimestamp, eventTimestampMs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (eventId) DO NOTHING;
           basePath: $
           jsonMaps:
             - jsonPath: $.event_id
@@ -50,16 +22,19 @@ serviceMaps:
             - jsonPath: $.identifier_type
             - jsonPath: $.report_name
             - jsonPath: $.trigger_frequency
+            - jsonPath: $.file_store_id
             - jsonPath: $.trigger_time
+            - jsonPath: $.report_triggered_time_ms
+            - jsonPath: $.report_triggered_time
             - jsonPath: $.dag_run_id
             - jsonPath: $.dag_name
             - jsonPath: $.status
             - jsonPath: $.status_order
             - jsonPath: $.error_message
             - jsonPath: $.error_type
-            - jsonPath: $.file_store_id
             - jsonPath: $.file_size_bytes
+            - jsonPath: $.report_generation_time_seconds
             - jsonPath: $.row_count
             - jsonPath: $.report_dates
-            - jsonPath: $.report_generation_time_seconds
             - jsonPath: $.timestamp
+            - jsonPath: $.timestamp_ms
