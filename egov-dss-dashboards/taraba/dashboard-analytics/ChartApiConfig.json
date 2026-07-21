@@ -16655,7 +16655,7 @@
         "indexName": "taraba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "stockBalanceTransformer",
-        "aggrQuery": "{\"size\":18000,\"query\":{\"bool\":{\"should\":[{\"range\":{\"Data.createdTime\":{\"gte\":1783881000000,\"lte\":1784140200000}}},{\"range\":{\"Data.createdTime\":{\"gte\":1784313000000}}}],\"minimum_should_match\":1}},\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.additionalDetails.status\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\",\"Data.dateOfEntry\",\"Data.createdTime\",\"Data.nameOfUser\",\"Data.userName\",\"Data.boundaryHierarchyCode\"]}"
+        "aggrQuery": "{\"size\":18000,\"query\":{\"bool\":{\"must_not\":[{\"range\":{\"Data.createdTime\":{\"lte\":1782777600000}}}]}},\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.additionalDetails.status\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\",\"Data.dateOfEntry\",\"Data.createdTime\",\"Data.nameOfUser\",\"Data.userName\", \"Data.boundaryHierarchyCode\"]}"
       }
     ],
     "chartType": "rawResponse",
