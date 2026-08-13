@@ -18662,6 +18662,68 @@
     "hideHeaderDenomination": true,
     "_comment": "expectedRows estimate for beneficiary_visit_list - raw document count (not deduplicated by individualId, per explicit product decision) filtered to all 8 RELEVANT_STATUSES the real script matches on."
   },
+  "cohort_report_estimate": {
+    "chartName": "DSS_HEALTH_BENEFICIARY_VISIT_LIST_ESTIMATE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.lastModifiedTime",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\"}",
+        "indexName": "taraba-project-task-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"estimatedCount\": {\"filter\": {\"terms\": {\"Data.administrationStatus.keyword\": [\"ADMINISTRATION_SUCCESS\", \"INELIGIBLE\", \"BENEFICIARY_REFERRED\", \"BENEFICIARY_REFUSED\", \"BENEFICIARY_DIED\", \"BENEFICIARY_ABSENT\", \"VISITED\", \"BENEFICIARY_MIGRATED\"]}}}}}",
+        "select": {
+          "estimatedCount": "estimatedCount.doc_count"
+        }
+      }
+    ],
+    "chartType": "rawResponse",
+    "merges": [
+      {
+        "mergeType": "linear",
+        "mergeKey": "estimatedCount",
+        "flatten": true,
+        "datasets": [],
+        "outputMappings": []
+      }
+    ],
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "filterKeys": [
+      {
+        "key": "campaignNumber"
+      },
+      {
+        "key": "projectTypeId"
+      }
+    ],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "estimatedCount"
+    ],
+    "cardsList": [
+      {
+        "id": "estimatedCount",
+        "labelKey": "DSS_HEALTH_BENEFICIARY_VISIT_LIST_ESTIMATE",
+        "valuePath": "estimatedCount",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "estimatedCount"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      }
+    ],
+    "insight": {},
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "_comment": "expectedRows estimate for beneficiary_visit_list - raw document count (not deduplicated by individualId, per explicit product decision) filtered to all 8 RELEVANT_STATUSES the real script matches on."
+  },
   "daily_hf_summary_report_estimate": {
     "chartName": "DSS_HEALTH_DAILY_HF_SUMMARY_REPORT_ESTIMATE",
     "queries": [
